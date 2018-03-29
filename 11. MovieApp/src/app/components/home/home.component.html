@@ -1,0 +1,16 @@
+<div class="jumbotron main-container">
+  <div class="container">
+    <h1>Welcome to the Movie App!!!</h1>
+  </div>
+</div>
+
+<div class="container movies">
+  <app-gallery [movies]="onCinema"
+               title="On Cinema"></app-gallery>
+  <br>
+  <app-gallery [movies]="populars"
+               title="Populars"></app-gallery>
+  <br>
+  <app-gallery [movies]="kids"
+               title="Kids"></app-gallery>
+</div>

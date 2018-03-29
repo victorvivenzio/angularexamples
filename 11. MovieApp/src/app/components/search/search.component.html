@@ -1,0 +1,25 @@
+<div class="container main-container">
+  <div class="row">
+    <div class="col-md-12">
+      <label for="search">Search:</label>
+      <input type="text"
+             [(ngModel)]="search"
+             name="search"
+             (keyup.enter)="searchMovie()"
+             class="form-control">
+    </div>
+  </div>
+  <hr>
+  <div class="row" *ngIf="movies">
+    <div class="card-columns">
+      <div class="card" *ngFor="let movie of movies">
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/{{ movie?.poster_path }}" [alt]="movie?.title">
+        <div class="card-body">
+          <h5 class="card-title">{{ movie?.title }}</h5>
+          <p class="card-text">{{ movie?.overview }}</p>
+          <button class="btn btn-outline-primary" [routerLink]="['/details', movie?.id ]"> more </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

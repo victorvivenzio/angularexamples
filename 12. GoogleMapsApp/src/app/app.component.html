@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<div class="container main-container">
+  <div class="row">
+    <div class="col-md-4">
+      <h5>Marker</h5>
+      <hr>
+      <div *ngIf="!selMarker" class="alert alert-primary"> Seleccione un Marcador</div>
+      <div *ngIf="selMarker">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text"
+                 [(ngModel)]="selMarker.title"
+                 name="title"
+                 class="form-control"
+          >
+        </div>
+        <div class="form-group">
+          <label for="descripcion">Description</label>
+          <textarea type="text"
+                    [(ngModel)]="selMarker.description"
+                    name="description"
+                    class="form-control"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="draggable">Draggable??</label>
+          <select [(ngModel)]="selMarker.draggable"
+                    name="draggable"
+                    class="form-control"
+          >
+            <option [ngValue]="true" [selected]="selMarker.draggable" >Yes</option>
+            <option [ngValue]="false" [selected]="!selMarker.draggable" >No</option>
+          </select>
+        </div>
+        <button class="btn btn-outline-primary btn-block" (click)="_mapsService.saveMarkers()">Save</button>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <agm-map [latitude]="lat"
+               [zoom]="zoom"
+               [longitude]="lng"
+               (mapClick)="mapClick( $event )">
+        <agm-marker *ngFor="let marker of _mapsService.markers; let i = index"
+                    [latitude]="marker.lat"
+                    [longitude]="marker.lng"
+                    [title]="marker.title"
+                    [markerDraggable]="marker.draggable"
+                    (markerClick)="markerClick( marker, i)"
+                    (dragEnd)="dragEndMarker( marker, $event )"
+        >
+          <agm-info-window>
+            <h6>{{ marker.title}}</h6>
+            <p *ngIf="marker.description">
+              {{ marker.description }}
+            </p>
+            <a class="text-danger pointer" (click)="_mapsService.deleteMarker(i); selMarker=null" >Delete Marker</a>
+          </agm-info-window>
+
+        </agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</div>
+

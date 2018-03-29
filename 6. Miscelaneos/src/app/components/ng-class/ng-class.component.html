@@ -1,0 +1,15 @@
+<div [ngClass]="classAlert" class="alert">
+  <strong>Success!</strong> Indicates a successful or positive action.
+</div>
+
+<button class="btn btn-primary" (click)="classAlert = 'alert-primary'">Primary</button>
+<button class="btn btn-danger" (click)="classAlert = 'alert-danger'">Danger</button>
+<br><br>
+<p [ngClass]="{ 'text-primary':!properties.danger, 'text-danger':properties.danger}" >
+  que fue lo que paso
+</p>
+<button
+  (click)="properties.danger = !properties.danger"
+  class="btn"
+  [ngClass]="{ 'btn-primary':!properties.danger, 'btn-danger':properties.danger}"
+>Cambiar</button>

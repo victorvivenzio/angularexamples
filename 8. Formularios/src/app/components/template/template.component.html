@@ -1,0 +1,121 @@
+<h4>Formularios <small>template</small></h4>
+<hr>
+<form novalidate (ngSubmit)="save( forma )" #forma="ngForm">
+
+  <div>
+
+    <div class="form-group row" >
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+        <input class="form-control"
+               [ngClass]="{'is-invalid': (name.errors?.required || name.errors?.minlength) && name.dirty, 'is-valid': !name.errors && name.dirty }"
+               type="text"
+               placeholder="Nombre"
+               name="name"
+               [(ngModel)]="user.name"
+               minlength="3"
+               required
+               #name="ngModel">
+        <div *ngIf="name.errors?.required && name.dirty" class="invalid-feedback">
+          El Nombre es Obligatorio
+        </div>
+        <div *ngIf="name.errors?.minlength && name.dirty" class="invalid-feedback">
+          El Nombre debe contener {{ name.errors.minlength.requiredLength }} caracteres
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+        <input class="form-control is-invalid"
+               [ngClass]="{'is-invalid': lastname.errors?.required && lastname.dirty, 'is-valid': !lastname.errors && lastname.dirty }"
+               type="text"
+               placeholder="Apellido"
+               name="lastname"
+               [(ngModel)]="user.lastname"
+               required
+               #lastname="ngModel">
+        <div *ngIf="lastname.errors?.required && lastname.dirty" class="invalid-feedback" role="alert">
+          El Apellido es Obligatorio
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             [ngClass]="{'is-invalid': (email.errors?.required || email.errors?.pattern) && email.dirty, 'is-valid': !email.errors && email.dirty }"
+             type="email"
+             placeholder="Correo electrónico"
+             name="email"
+             [(ngModel)]="user.email"
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+             required
+             #email="ngModel">
+      <div *ngIf="email.errors?.required && email.dirty" class="invalid-feedback" role="alert">
+        El Correo Electronico es Obligatorio
+      </div>
+      <div *ngIf="email.errors?.pattern  && email.dirty" class="invalid-feedback" role="alert">
+        El Correo Electronico no es Valido
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Country</label>
+    <div class="col-md-8">
+      <select class="custom-select"
+              [(ngModel)]="user.country"
+              name="country">
+        <option value="" >Seleccione</option>
+        <option *ngFor="let country of countries" [value]="country.codigo">{{ country.name }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Gender</label>
+    <div class="col-md-8">
+      <div class="form-check form-check-inline">
+        <input [(ngModel)]="user.gender"
+               class="form-check-input"
+               type="radio"
+               name="gender"
+               value="male">
+        <label class="form-check-label">Male</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input [(ngModel)]="user.gender"
+               class="form-check-input"
+               type="radio"
+               name="gender"
+               value="female">
+        <label class="form-check-label">Female</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Terminos</label>
+    <div class="col-md-8">
+      <div class="custom-control custom-checkbox">
+      <input [(ngModel)]="user.terms" type="checkbox" class="custom-control-input" name="terms" id="terms">
+      <label class="custom-control-label" for="terms">Check this custom checkbox</label>
+    </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary" [disabled]="!forma.valid" >
+        Guardar
+      </button>
+    </div>
+  </div>
+
+</form>

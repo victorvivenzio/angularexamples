@@ -1,0 +1,110 @@
+<h4>Formularios <small>Data</small></h4>
+<hr>
+<form [formGroup]="form" (submit)="saveForm()" novalidate>
+
+  <div formGroupName="fullname">
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               [ngClass]="{ 'is-invalid': !form.controls['fullname'].controls['name'].valid, 'is-valid': form.controls['fullname'].controls['name'].valid  }"
+               type="text"
+               placeholder="Nombre"
+               formControlName="name" >
+        <div class="invalid-feedback" *ngIf="form.get('fullname.name').errors?.required">
+          Field Required
+        </div>
+        <div class="invalid-feedback" *ngIf="form.get('fullname.name').errors?.minlength">
+          At least {{ form.get('fullname.name').errors?.minlength.requiredLength }} Characters
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Apellido"
+               formControlName="lastname">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Username</label>
+    <div class="col-8">
+
+      <input class="form-control"
+             type="text"
+             placeholder="Username"
+             formControlName="username">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+             formControlName="email">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Password</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="password"
+             placeholder="Password"
+             formControlName="password1">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Repeat</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="password"
+             placeholder="Repeat Password"
+             formControlName="password2">
+    </div>
+  </div>
+
+  <div class="form-group row" formArrayName="hobbies">
+    <label class="col-2 col-form-label">Hobbies</label>
+    <div class="col-md-8">
+      <input
+             *ngFor="let hobby of form.controls['hobbies'].controls; let i = index"
+             class="form-control"
+             type="text"
+             placeholder="Hobby"
+             [formControlName]="i">
+    </div>
+    <div class="col-2">
+      <button
+        type="button"
+        (click)="addHobbie()"
+        class="btn btn-outline-primary">Add</button>
+    </div>
+  </div>
+
+{{ form.valid }}
+{{ form.status }}
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary">
+        Guardar
+      </button>
+    </div>
+  </div>
+
+</form>

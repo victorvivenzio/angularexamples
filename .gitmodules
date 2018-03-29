@@ -4,3 +4,33 @@
 [submodule "10. Firechat\\"]
 	path = 10. Firechat\\
 	url = https://github.com/victorvivenzio/angularexamples.git
+[submodule "11. MovieApp\\"]
+	path = 11. MovieApp\\
+	url = https://github.com/victorvivenzio/angularexamples.git
+[submodule "2. SPA\\"]
+	path = 2. SPA\\
+	url = https://github.com/victorvivenzio/angularexamples.git
+[submodule "3. pipes\\"]
+	path = 3. pipes\\
+	url = https://github.com/victorvivenzio/angularexamples.git
+[submodule "4. spotiapp\\"]
+	path = 4. spotiapp\\
+	url = https://github.com/victorvivenzio/angularexamples.git
+[submodule "6. Miscelaneos\\"]
+	path = 6. Miscelaneos\\
+	url = https://github.com/victorvivenzio/angularexamples.git
+[submodule "8. Formularios\\"]
+	path = 8. Formularios\\
+	url = https://github.com/victorvivenzio/angularexamples.git
+[submodule "9. HeroesApp\\"]
+	path = 9. HeroesApp\\
+	url = https://github.com/victorvivenzio/angularexamples.git
+[submodule "12. GoogleMapsApp\\"]
+	path = 12. GoogleMapsApp\\
+	url = https://github.com/victorvivenzio/angularexamples.git
+[submodule "13. YoutubeApp\\"]
+	path = 13. YoutubeApp\\
+	url = https://github.com/victorvivenzio/angularexamples.git
+[submodule "15. FirePhotos\\"]
+	path = 15. FirePhotos\\
+	url = https://github.com/victorvivenzio/angularexamples.git
