@@ -1,3 +1,6 @@
 [submodule "1. Hola Mundo\\"]
 	path = 1. Hola Mundo\\
 	url = https://github.com/victorvivenzio/angularexamples.git
+[submodule "10. Firechat\\"]
+	path = 10. Firechat\\
+	url = https://github.com/victorvivenzio/angularexamples.git
